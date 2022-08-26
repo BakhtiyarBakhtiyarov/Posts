@@ -37,13 +37,18 @@ tr:nth-child(even) {
     <td>{{ $loop->iteration }}</td>    
     <td>{{ $post->title }}</td>
     <td>{{ $post->description }}</td>
-    @can('post-edit',$post)
+    @can('post',$post)
+    <td> <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning">Edit</a></td>
+    <td> <button onclick="PostDelete('{{ $post->id }}')" type="button" class="btn btn-danger">Delete</button></td>
+    @elsecan('is_admin')
     <td> <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning">Edit</a></td>
     <td> <button onclick="PostDelete('{{ $post->id }}')" type="button" class="btn btn-danger">Delete</button></td>
     @endcan
   </tr>
   @endforeach
 </table>
+<br>
+<a href="{{ route('logout') }}" style="margin-left: 94%" type="button" class="btn btn-dark">Logout</button>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
