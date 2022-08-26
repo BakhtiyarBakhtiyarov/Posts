@@ -24,11 +24,8 @@ class PostUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-                'resume_resume_type'             => 'required',
-                'resume_start_date'             => 'required',
-                'resume_end_date'             => 'required',
-                'resume_title'             => 'required',
-                'resume_description'             => 'required'
+                'posts_title'             => 'required',
+                'posts_description'             => 'required'
         ];
     }
 }

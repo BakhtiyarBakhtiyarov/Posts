@@ -23,18 +23,19 @@ class PostController extends Controller
 
     public function update(PostUpdateRequest $request)
     {
-        $posts = Posts::where('id',$request->resume_id )->update([
-            'title'                   => $request->resume_title,
-            'description'             => $request->resume_description
+        // dd($request->all());
+        $posts = Posts::where('id',$request->posts_id )->update([
+            'title'                   => $request->posts_title,
+            'description'             => $request->posts_description
         ]);
-
-        // dd($resume);
+        
+        
         if ($posts)
         {
-            return redirect()->route('post.index')->with('success','Post updated successfully!!!');
+            return redirect()->route('posts.index')->with('success','Post updated successfully!!!');
         }
         else{
-            return redirect()->route('post.index')->with('errors','Error happened!!!');
+            return redirect()->route('posts.edit')->with('errors','Error happened!!!');
         }  
     }
 
